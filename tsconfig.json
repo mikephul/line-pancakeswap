@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "rootDir": ".",
+      "outDir": "./build",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "strict": false,
+      "declaration": true,
+    },    
+    "compileOnSave": true,
+    "include": ["src", "test", "scripts", ".eslintrc.js"]
+  }

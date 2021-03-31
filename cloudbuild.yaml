@@ -1,0 +1,27 @@
+steps:
+  # Build and push the container image
+  - name: "gcr.io/kaniko-project/executor:latest"
+    args:
+      [
+        "--destination",
+        "gcr.io/$PROJECT_ID/backend",
+        "--cache",
+        "--build-arg",
+        "ENV_NAME=${_ENV_NAME}",
+      ]
+
+  # Deploy container image to Cloud Run
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "run",
+        "deploy",
+        "backend",
+        "--image",
+        "gcr.io/$PROJECT_ID/backend",
+        "--region",
+        "asia-southeast1",
+        "--platform",
+        "managed",
+        "--allow-unauthenticated",
+      ]
